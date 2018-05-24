@@ -1,0 +1,154 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+\documentclass[letterpaper, 11 pt, onecolumn]{article}
+
+\linespread{0.98}
+\usepackage{tgpagella}
+\usepackage{url}
+\usepackage{hyperref}
+
+\usepackage[dvips]{color}
+
+\usepackage{pslatex}
+% \usepackage{nopageno}
+\usepackage{enumitem}
+\setlist{itemsep=0em, topsep=0em}
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+
+\usepackage{tabularx}
+%\usepackage{hangcaption}
+\usepackage[font=footnotesize]{caption}
+\usepackage[final]{graphicx}
+%\DeclareGraphicsExtensions{.eps,.ps,.PS,.EPS}
+\usepackage{epsfig}
+%\usepackage{subfig}
+\usepackage{tikz}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+
+%\usepackage{xspace}
+\usepackage{cite}
+\usepackage{url}
+\usepackage[letterpaper]{}
+\usepackage{epstopdf}
+\usepackage{authblk}
+\usepackage{lineno}
+\usepackage{todonotes}
+\usepackage{soul}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%\usepackage[font=footnotesize,labelfont=bf]{caption}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{pgfgantt}
+\usepackage[numbers,sort&compress]{natbib}
+
+\usepackage[compact]{titlesec}
+\usepackage{subcaption}
+
+\usepackage{titling}
+\setlength{\droptitle}{-5em}   % This is your set screw
+\setlength{\belowcaptionskip}{-10pt}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{0.4\baselineskip}{0.4\baselineskip}
+\titlespacing*{\subsection}{0pt}{0.4\baselineskip}{0.4\baselineskip}
+\titlespacing*{\subsubsection}{0pt}{0.4\baselineskip}{0.4\baselineskip}
+\setlist[itemize]{leftmargin=*}
+
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\floatpagefraction}{0.8}
+\renewcommand{\textfraction}{0.1}
+\setlength{\floatsep}{5pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{5pt plus 2pt minus 2pt}
+\setlength{\intextsep}{5pt plus 2pt minus 2pt}
+
+% for comments
+\newcommand{\zhi}[1]{\textcolor{blue}{ZL: #1}}
+\newcommand{\kris}[1]{\textcolor{green}{JR: #1}}
+\newcommand{\jacob}[1]{\textcolor{magenta}{KH: #1}}
+\newcommand{\jeanine}[1]{\textcolor{red}{JS: #1}}
+
+
+
+% \setlist[enumerate]{leftmargin=*}
+
+\titlespacing{\paragraph}{%
+  0pt}{%              left margin
+  0\baselineskip}{% space before (vertical)
+  0.3em}%               space after (horizontal)
+
+\titlespacing{\subsection}{%
+  0em}{%              left margin
+  0.15\baselineskip}{% space before (vertical)
+  0.15\baselineskip}%               space after (horizontal)
+
+% figures with text wrapped around
+\usepackage{wrapfig}
+\usepackage{titling}
+\setlength{\droptitle}{-5em}   % This is your set screw
+\setlength{\textfloatsep}{0.8\baselineskip plus 0.2\baselineskip minus 0.5\baselineskip}
+
+\newcommand{\fig}[1]{Fig.~\ref{#1}}
+\newcommand{\figs}[2]{Fig.~\ref{#1} to~\ref{#2}\xspace}
+\newcommand{\figa}[2]{Fig.~\ref{#1} and~\ref{#2}\xspace}
+\newcommand{\eq}[1]{Eq.~(\ref{#1})}
+\newcommand{\eqs}[2]{Equations~(\ref{#1}) to~(\ref{#2})}
+\newcommand{\eqa}[2]{Equations~(\ref{#1}) and~(\ref{#2})}
+
+\pagestyle{plain}                                                      %%
+%%%%%%%%%% EXACT 1in MARGINS %%%%%%%                                   %%
+\setlength{\textwidth}{6.5in}     %%                                   %%
+\setlength{\oddsidemargin}{0in}   %% (It is recommended that you       %%
+\setlength{\evensidemargin}{0in}  %%  not change these parameters,     %%
+\setlength{\textheight}{8.5in}    %%  at the risk of having your       %%
+\setlength{\topmargin}{0in}       %%  proposal dismissed on the basis  %%
+\setlength{\headheight}{0in}      %%  of incorrect formatting!!!)      %%
+\setlength{\headsep}{0in}         %%                                   %%
+\setlength{\footskip}{.5in}       %%                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                                   %%
+\renewcommand{\refname}{References Cited}                              %%
+\bibliographystyle{plain}
+
+
+
+\begin{document}
+
+
+\setcounter{page}{1}
+\input{000Abstract.tex}
+\pagebreak
+
+% \maketitle
+
+\vspace{-4pt}
+
+\pagestyle{plain}
+\setcounter{page}{1}
+
+
+\setcounter{page}{1}
+\input{001Introduction.tex}
+\input{002Background.tex}
+\input{003ResearchPlan.tex}
+\input{004BroaderImpact.tex}
+\input{005PriorNSF.tex}
+
+\input{010Sup-Collaboration.tex}
+\input{010Sup-DataManagement.tex}
+\input{010Sup-Facility.tex}
+\input{010Sup-Subject.tex}
+
+\bibliographystyle{IEEEtran}
+\bibliography{./ZhiLi_ref,hauser_refs}
+
+\end{document}
