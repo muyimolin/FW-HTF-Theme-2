@@ -68,21 +68,46 @@ Before inclusion in the library a primitive task will be evaluated for completen
 \subsubsection{Motion coordination assistance}
 \textcolor{red}{TODO: Jane}
 
-This task aims to study the motion-perception coordination developed through various teleoperation interfaces that differ in motion mapping. It also investigates the teleoperated motion coordination performed under passive, passive, active, and interactive perception. The teleoperated robot motion are decomposed to low-level motion primitives and abstract the high-level motion coordination plan, of which the features are used to measure and compare the motion-perception coordination developed through different teleoperation interface, and under various perception mode. We further study the regularity and variability of the developed motion coordination across teleoperation interfaces, to reveal the adaption of human motor control to robot motion and perception capabilities.
+This task aims to study the motion coordination developed through various teleoperation interfaces that differ in motion mapping. It also investigates the teleoperated motion coordination performed under passive, active, and interactive perception. The teleoperated robot motion coordination are decomposed to low-level motion primitives and abstract the high-level motion coordination plan, of which the features are used to measure and compare the motion-perception coordination developed through different teleoperation interface, and under various perception mode. We further study the regularity and variability of the developed motion coordination across teleoperation interfaces, to reveal the adaption of human motor control to robot motion and perception capabilities.
 
-In this task, we focus on the behavior of expert teleoperators. We assume sufficient training, they have optimized the adaption of their motion-perception coordination strategies to the motion and perception capabilities of the teleoperated robots. Through this task, we aims to:
+In this task, we focus on the behavior of expert teleoperators. We assume with sufficient training, they have optimized the adaption of their motion coordination strategies to the motion and perception capabilities of the teleoperated robots. Through this task, we aims to:
 
 \begin{itemize}
+
+\item Develop a novel framework for evaluating the transparency of robot teleoperation interfaces. 
 
 \item Identify the sets and frequent combinations of teleoperated robot motion primitives developed through different teleoepration interface. 
 
 \item Construct high-level representation of the teleoperated motion coordinations using symbols for abstract states and option. 
 
-\item Develop novel performance metrics to quantitatively compare the motion primitives and task motion plan. 
-
 \item Model the association of user's choice of camera views with the motion coordination plan to infer the motion-perception coordination strategy. 
 
 \end{itemize}
+
+Recently developed tele-nursing robots \cite{Li2017} are equipped with multiple manipulator arms, hands and mobile base. However, performing complex and dexterous motion coordination is still difficult even if the robots are under direct teleoperation of expert users. It is also hard for the teleoperator to perceive the remote environment and tasks through camera views, which affects the users' situation awareness, motion fluency and motion control accuracy. Previous research has compared teleoperation interface by their hardware capability and system configuration (e.g., field of view, camera viewpoints, depth perception, video frame rate, bandwidth limitations), time delay and control stability, sensory feedback channels (e.g., visual, audio, tactile display), motion control interfaces (e.g., voice, gesture, motion mapping control)~\cite{chen07, Zhu11,Luis14}, and augmented reality~\cite{Fritsche15,Garcia17,Peppoloni15,Brizzi18}. However, research so far hasn't systematically compared teleoepration interfaces by regularity and variability of the motion primitives and complexity of task plan in the teleoperated motion coordination.
+
+Thus, we propose to learn from the teleoperated motion coordination demonstrated by expert users, to extract the robot's low-level motion primitives and high-level plan for nursing tasks that involves arm-hand coordination, bimanual coordination and loco-manipulation. We further compare the teleoperated motion coordination controlled through different user interfaces, and evaluate the interface usability in teleoperation. In addition to action motion coordination, we will also investigate the action and vision perception coordination, including when and how the teleoperator switch among multiple available camera views to facilitate the action being performed. Our proposed research contributes to the understanding of how human motor control adapt to the motion and perception capabilities of remote robotic surrogates. It also informs the design of human-robot teleoperation interface that can facilitate the learning of motion and perception mapping for novice users. 
+
+\begin{wrapfigure}{r}{0.5\linewidth}
+\centering
+\includegraphics[width=0.5\textwidth]{fig//TeleInterface}
+\caption{Teleoperation system software architecture}
+\label{fig:TeleInterface}
+\vspace{0.5ex}
+\end{wrapfigure}
+
+
+\paragraph{User study} Our user study aims to investigate how expert teleoperators control the motion coordination of a mobile humanoid robot through different teleoperation interfaces. We focus on the set of motion primitives developed through the usage of various robot control interfaces, and the task plan frequently used in arm-hand, bimanual and loco-manipulation coordination. Our experiment platform TRINA has a humanoid robot torso (Rethink Robotics Baxter), an omnidirectional mobile base (HStar AMP-I) and two three-fingered grippers (Righthand Robotics Reflex grippers)~\cite{Li2017}. Shown in~\fig{fig:TeleInterface}, our preliminary work has setup six input interfaces to control the motion of humanoid robot and its mobile base, including (1) keyboard and mouse, (2) gamepad, (3) Geomagic touch haptic devices, (4) RoboPuppet~\cite{}, and motion mapping from (5) Vicon motion capture system and (6) Kinect v2 camera. The platform also enables a teleoperator to use voice control to switch camera views, from the RGB+D cameras attached to the left and right hands, mounted on robot head, and from a standalone camera that look at the robot and workspace. 
+
+Our user study will train subjects to be fluent in the teleoperation a mobile humanoid robot and perform teleoperated motion coordination tasks shown in~\fig{NursingTask}. We will record synchronized teleoperated robot motion, control interface input and interface visual display. We segment the collected data to extract motion primitives from the motion robot hand, arm and mobile bases, and coupled them if the motions are performed simultaneously. In addition, we also extract information for motion-perception coordination. We associate the camera view being used with the motion being performed. We also record task performance including task completion time, collisions with unwanted objects, and success rate over repetitive trials. 
+
+\paragraph{Comparing motion primitives and task plan across teleoperation interfaces}
+
+
+\paragraph{Inferring high-level motion coordination strategies to inform task automation}
+The design of intelligent teleoperation interface poses the fundamental question of \textit{what is the appropriate task division between human and robot in shared-autonomous control}. Indeed, the control effort-sharing between robot automation and direct human control can refer to how human motor system regulate the controlled and uncontrolled manifolds. Take reaching-to-grasp motion for instance, as human focusing on control hand position and orientation, the arm posture (i.e., how to pose the elbow) is automatically handled. In bimanual coordination, human focuses more on the control of dominant hand, while dominant hand follows naturally and accordingly. 
+
+In this study, we aim to examine the high-level motion coordination strategy for the coordination of macro-micro structures (e.g., arm-hand, based-arm), dominant/non-dominant arms, and action-perception arms. We hypothesis that given manipulation as the primary task, the adjustment of the mobiles base, non-dominant/perception arm and the action arm posture aims to (1) maximizing the action arm's manipulability and reachability to the candidate objects in workspace, (2) maintaining the stereoscopic visibility of the object being manipulated, and minimizing the amount of large (robot) motion. To evaluate this hypothesis, we apply inverse reinforcement learning to the high-level motion coordination plans modeled as semi-markov decision processes. We shape a reward function based on the considerations in our hypothesis and use the inferred weighting coefficients to evaluate their validity.  
 
 \subsubsection{Adaptive task scheduling}
 \textcolor{red}{TODO: Missy}
@@ -159,7 +184,9 @@ The evaluation of this task will utilize Duke Robotics facilities and personnel 
 \textcolor{red}{TODO: Jeanine}
 
 \subsubsection{Formulate best practices}
-\textcolor{red}{TODO: Jane}
+This task aims to evaluate motor skill progression and recovery with the assistance of human-autonomy interface for nursing, surgical and rehabilitation robots. We conduct user studies to investigate the evolution of motion coordination (e.g., motion primitives and task plans), motion economy, and demand of conscious attention as the motor skills of the robot users develops from novice (paretic) to expert (healthy) level. We hypothesize that , they have optimized the adaption of their motion coordination strategies to the motion and perception capabilities of the teleoperated robots. Through this task, we aims to:
+
+
 
 
 
